@@ -28,7 +28,7 @@ class AccountController extends Controller {
             'password' => Hash::make($request->password),
         ]);
 
-        return response()->json(['message' => 'User registered successfully', 'account' => $account], 201);
+        return response()->json(['message' => 'User registered successfully'], 201);
     }
 
     public function login(Request $request) {
@@ -42,10 +42,7 @@ class AccountController extends Controller {
         if (!$account || !Hash::check($request->password, $account->password)) return response()->json(['message' => 'Invalid email or password'], 401);
 
         Auth::login($account);
-        return response()->json([
-            'message' => 'Logged in successfully',
-            'account' => $account
-        ], 200);
+        return response()->json(['message' => 'Logged in successfully'], 200);
     }
 
     public function logout(Request $request) {
@@ -57,7 +54,6 @@ class AccountController extends Controller {
 
     public function checkLogin() {
         if (session()->has('account')) return response()->json(['message' => 'User is already logged in', 'account' => session('account')], 200);
-
         return response()->json(['message' => 'User is not logged in'], 401);
     }
 }

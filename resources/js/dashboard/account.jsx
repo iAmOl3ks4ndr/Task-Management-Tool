@@ -1,36 +1,10 @@
 import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 
-class Workspaces extends Component {
+class Account extends Component {
     constructor() {
         super()
-
-        this.state = {
-            name: "",
-            surname: ""
-        }
     }
-
-    componentDidMount() {
-        this.fetchUser()
-    }
-
-    fetchUser = async () => {
-        try {
-            const response = await fetch('/api/shortUser', {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Accept': 'application/json',
-                },
-            })
-
-            const data = await response.json()
-            this.setState({name: data.name, surname: data.surname})
-
-        }
-        catch (err) { console.error(err.message) }
-    };
 
     logoutUser = async () => {
         const response = await fetch('http://127.0.0.1:8000/logout', {
@@ -53,13 +27,13 @@ class Workspaces extends Component {
         return (
             <>
                 <nav className="navigationBar">
-                    <div className="section">
-                        <a onClick={() => window.location.href = '/account'}>My Account</a>
-                        <div className="sectionUnderline"></div>
-                    </div>
                     <div className="section currentSection">
-                        <a>My Workspaces</a>
+                        <a>My Account</a>
                         <div className="sectionUnderline currentSectionLine"></div>
+                    </div>
+                    <div className="section">
+                        <a onClick={() => window.location.href = '/workspaces'}>My Workspaces</a>
+                        <div className="sectionUnderline"></div>
                     </div>
                     <div className="section">
                         <a onClick={this.logoutUser}>Log Out</a>
@@ -67,19 +41,16 @@ class Workspaces extends Component {
                     </div>
                 </nav>
 
-                <div className="sectionWelcome">
-                    <p className="mainMessage">Welcome, {this.state.name} {this.state.surname}</p>
-                    <p className="phraseText">Let's make the day!</p>
-                </div>
+                <div className="sectionWelcome"><p className="mainMessage">My Account</p></div>
             </>
         )
     }
 }
 
-const rootElement = document.getElementById('workspacesPage');
+const rootElement = document.getElementById('accountPage');
 if (rootElement) {
     const root = createRoot(rootElement);
-    root.render(<Workspaces />);
+    root.render(<Account />);
 }
 
-export default Workspaces;
+export default Account;
