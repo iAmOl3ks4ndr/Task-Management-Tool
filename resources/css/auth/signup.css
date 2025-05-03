@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+.signUpForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.welcomeMessage {
+    opacity: 0;
+    animation: showup 0.75s ease-in-out forwards;
+    animation-delay: 0.1s;
+}
+
+.welcomeMessage p {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    color: transparent;
+    background: linear-gradient(45deg, #ff416c, #dcff41);
+    background-clip: text;
+}
+
+.formSection {
+    width: 528px;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    animation: showup 1s ease-in-out forwards;
+    animation-delay: 0.8s;
+}
+
+.formBox {
+    width: 100%;
+    height: 100%;
+    background-color: #323232;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.formName {
+    width: 100%;
+    height: 12.5%;
+    background-color: #363636;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formName p {
+    color: white;
+    font-size: 1.5em;
+}
+
+.formContainer {
+    width: 100%;
+    height: 75%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.formGroup {
+    width: 100%;
+    height: 17.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.formLabels {
+    display: flex;
+}
+
+.formLabels p {
+    height: 100%;
+    color: white;
+    font-size: 18px;
+}
+
+.formLabels .formErrors {
+    height: 100%;
+    margin-left: 15px;
+    color: red;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.formGroup input {
+    width: 85%;
+    height: 45px;
+    padding: 0 15px 0 15px;
+    color: white;
+    background-color: #484848;
+    border: 0;
+    border-radius: 10px;
+}
+
+.formGroup input:focus {
+    outline: none;
+    border: 1px solid #aaa;
+    box-shadow: none;
+}
+
+.formButton {
+    width: 100%;
+    height: 12.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formButton input {
+    all: unset;
+    width: 100px;
+    height: 45px;
+    color: white;
+    text-align: center;
+    background-color: #484848;
+    border-radius: 10px;
+    transition: transform 0.25s ease;
+}
+
+.formButton input:hover {
+    cursor: pointer;
+    background-color: #484848;
+    transform: translateY(-5px);
+}
+
+.formButton input:active {
+    background-color: #404040 !important;
+}
+
+.formButton input:disabled {
+    background-color: #484848;
+    opacity: 0.65;
+}
+
+.formLoginMessage {
+    width: 528px;
+    height: 40px;
+    background-color: #323232;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formLoginMessage p {
+    font-size: 14px;
+    color: white;
+}
+
+.formToLogin:hover {
+    color: #9191f8;
+    cursor: pointer;
+}
+
+.formToLogin:active {
+    color: #7f7fff;
+}
+
+@keyframes showup {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes smoothFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0px); }
+}

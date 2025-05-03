@@ -24,6 +24,13 @@ The following features are:
 
 The idea is that you create a workspace (project) and its backlog items (tasks) and you can manage them by placing them into the stages outlined above.
 
+## Dependencies
+
+1. Frontend packages including Vite
+```bash
+npm install
+```
+
 ## Setup
 
 You need to do the following in order to launch the application:  
@@ -51,5 +58,6 @@ php artisan migrate:refresh
 
 4. Run the application using:
 ```bash
+npm run dev
 php artisan serve
 ```
