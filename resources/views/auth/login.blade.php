@@ -1,35 +1,16 @@
-<div class="signUpForm">
-    <div class="welcomeMessage"><p>Welcome to<br>Project Management Tool</p></div>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="formSection loginForm">
-        <div class="formBox">
-            <div class="formName"><p>Log In</p></div>
+        <title>Task Management Tool - Sign Up</title>
 
-            <div class="formContainer">
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>Email</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="email" placeholder="Your email (e.g. alex@gmail.com)" required>
-                </div>
-
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>Password</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="password" placeholder="Your password" required>
-                </div>
-            </div>
-
-            <div class="formButton">
-                <input class="btn btn-primary" type="button" value="Log In" disabled>
-            </div>
-        </div>
-        <div class="formSignupMessage">
-            <p>Do not have an account?</p>
-            <p class="formToSignup">&nbsp;Sign Up</p>
-        </div>
-    </div>
-</div>
+        @viteReactRefresh
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <div class="loginForm" id="loginForm" data-signup-url="{{ route('signup') }}"></div>
+        @vite(['resources/js/auth/login.jsx'])
+    </body>
+</html>

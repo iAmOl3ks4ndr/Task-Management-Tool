@@ -8,7 +8,5 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-        @include('auth/login')
-    </body>
+    <body></body>
 </html>

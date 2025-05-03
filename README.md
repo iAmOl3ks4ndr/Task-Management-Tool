@@ -31,6 +31,12 @@ The idea is that you create a workspace (project) and its backlog items (tasks) 
 npm install
 ```
 
+2. React
+```bash
+npm install react react-dom
+npm install --save-dev @vitejs/plugin-react
+```
+
 ## Setup
 
 You need to do the following in order to launch the application:  

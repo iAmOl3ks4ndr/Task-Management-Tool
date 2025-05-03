@@ -1,59 +1,15 @@
-<div class="signUpForm">
-    <div class="welcomeMessage"><p>Welcome to<br>Project Management Tool</p></div>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="formSection">
-        <div class="formBox">
-            <div class="formName"><p>Sign Up</p></div>
+        <title>Task Management Tool - Sign Up</title>
 
-            <div class="formContainer">
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>First Name</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="text" placeholder="Your name (e.g. Conor)" required>
-                </div>
-
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>Last Name</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="text" placeholder="Your surname (e.g. Byrne)" required>
-                </div>
-
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>Email</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="email" placeholder="Your email (e.g. alex@gmail.com)" required>
-                </div>
-
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>Password</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="password" placeholder="Your password" required>
-                </div>
-
-                <div class="formGroup">
-                    <div class="formLabels">
-                        <p>Confirm Password</p>
-                        <p class="formErrors"></p>
-                    </div>
-                    <input type="password" placeholder="Repeat your password" required>
-                </div>
-            </div>
-
-            <div class="formButton">
-                <input class="btn btn-primary" type="button" value="Sign Up" disabled>
-            </div>
-        </div>
-        <div class="formLoginMessage">
-            <p>Already have an account?</p>
-            <p class="formToLogin">&nbsp;Log in</p>
-        </div>
-    </div>
-</div>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        <div class="signupForm" id="signupForm" data-login-url="{{ route('login') }}"></div>  
+        @vite(['resources/js/auth/signup.jsx'])      
+    </body>
+</html>
