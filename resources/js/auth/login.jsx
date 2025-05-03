@@ -8,8 +8,7 @@ class Login extends Component {
         this.state = {
             "emailField": "",
             "passwordField": "",
-            "emailError": "",
-            "passwordError": ""
+            "errorMessage": ""
         }
     }
 
@@ -24,6 +23,11 @@ class Login extends Component {
     fieldsAreEmpty() { return (this.state.emailField === "" || this.state.passwordField === "") }
 
     loginUser = async () => {
+        if (!(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(this.state.emailField))) {
+            this.setState({errorMessage: "The email field must be a valid email address."})
+            return
+        }
+
         const response = await fetch('/api/login', {
             method: 'POST',
             headers: {
@@ -38,7 +42,7 @@ class Login extends Component {
         const data = await response.json()
     
         if (response.status === 200) window.location.href = '/workspaces'
-        else this.setState({emailError: data.message, passwordError: ""})
+        else this.setState({errorMessage: data.message})
     }
 
     render() {
@@ -58,7 +62,7 @@ class Login extends Component {
                             <div className="formGroup">
                                 <div className="formLabels">
                                     <p>Email</p>
-                                    <p className="formErrors">{this.state.emailError}</p>
+                                    <p className="formErrors">{this.state.errorMessage}</p>
                                 </div>
                                 <input
                                     type="text"
@@ -72,7 +76,7 @@ class Login extends Component {
                             <div className="formGroup">
                                 <div className="formLabels">
                                     <p>Password</p>
-                                    <p className="formErrors">{this.state.passwordError}</p>
+                                    <p className="formErrors"></p>
                                 </div>
                                 <input
                                     type="password"
