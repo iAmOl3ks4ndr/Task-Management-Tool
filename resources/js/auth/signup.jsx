@@ -117,6 +117,17 @@ class Signup extends Component {
             });
 
             const result = await response.json();
+
+            if (result.email && result.email[0] === "Account with this email already exists") {
+                this.setState({emailError: "Account with this email already exists"})
+                return
+            }
+
+            if (response.status === 201) {
+                localStorage.setItem("signedMsg", true)
+                window.location.href = '/login'
+            }
+            
             console.log(result);
 
         }

@@ -2,12 +2,53 @@ import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 
 class Login extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            "emailField": "",
+            "passwordField": "",
+            "emailError": "",
+            "passwordError": ""
+        }
+    }
+
+    componentDidMount() {
+        if (localStorage.getItem('signedMsg')) {
+            document.getElementById("signedupMessage").style.display = "flex"
+            localStorage.removeItem('signedMsg');
+        }
+    }
+
+    handleInputChange = (e) => this.setState({ [e.target.name]: e.target.value.replace(/\s/g, '') });
+    fieldsAreEmpty() { return (this.state.emailField === "" || this.state.passwordField === "") }
+
+    loginUser = async () => {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            },
+            credentials: 'include',
+            body: JSON.stringify({ email: this.state.emailField, password: this.state.passwordField })
+        })
+    
+        const data = await response.json()
+    
+        if (response.status === 200) window.location.href = '/workspaces'
+        else this.setState({emailError: data.message, passwordError: ""})
+    }
+
     render() {
         const signupUrl = document.getElementById('loginForm').dataset.signupUrl;
 
         return (
             <>
                 <div className="welcomeMessage"><p>Welcome to<br />Project Management Tool</p></div>
+
+                <div className="signedupMessage" id="signedupMessage"><p>Your account was successfully registered. Please log in</p></div>
 
                 <div className="formSection loginForm">
                     <div className="formBox">
@@ -17,22 +58,34 @@ class Login extends Component {
                             <div className="formGroup">
                                 <div className="formLabels">
                                     <p>Email</p>
-                                    <p className="formErrors"></p>
+                                    <p className="formErrors">{this.state.emailError}</p>
                                 </div>
-                                <input type="email" placeholder="Your email (e.g. alex@gmail.com)" required />
+                                <input
+                                    type="text"
+                                    name="emailField"
+                                    placeholder="Your email (e.g. alex@gmail.com)"
+                                    value={this.state.emailField}
+                                    onChange={this.handleInputChange}
+                                />
                             </div>
 
                             <div className="formGroup">
                                 <div className="formLabels">
                                     <p>Password</p>
-                                    <p className="formErrors"></p>
+                                    <p className="formErrors">{this.state.passwordError}</p>
                                 </div>
-                                <input type="password" placeholder="Your password" required />
+                                <input
+                                    type="password"
+                                    name="passwordField"
+                                    placeholder="Your password"
+                                    value={this.state.passwordField}
+                                    onChange={this.handleInputChange}
+                                />
                             </div>
                         </div>
 
                         <div className="formButton">
-                            <input className="btn btn-primary" type="button" value="Log In" disabled />
+                            <input className="btn btn-primary" type="button" value="Log In" onClick={this.loginUser} disabled={this.fieldsAreEmpty()} />
                         </div>
                     </div>
                     <div className="formSignupMessage">
