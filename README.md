@@ -37,6 +37,16 @@ npm install react react-dom
 npm install --save-dev @vitejs/plugin-react
 ```
 
+## Clear Cache
+To clear all the cache when you make changes, run this:
+```bash
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan optimize:clear
+```
+
 ## Setup
 
 You need to do the following in order to launch the application:  

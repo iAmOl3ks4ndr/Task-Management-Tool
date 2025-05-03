@@ -5,7 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Accounts extends Model {
-    /** @use HasFactory<\Database\Factories\UsersFactory> */
+class Account extends Model {
     use HasFactory;
+
+    public $timestamps = false;
+    protected $table = 'accounts';
+    protected $fillable = [
+        'name',
+        'surname',
+        'email',
+        'password',
+    ];
 }
