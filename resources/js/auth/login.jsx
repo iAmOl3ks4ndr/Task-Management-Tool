@@ -54,7 +54,7 @@ class Login extends Component {
 
                 <div className="signedupMessage" id="signedupMessage"><p>Your account was successfully registered. Please log in</p></div>
 
-                <div className="formSection loginForm">
+                <div className="formSection loginFormBox">
                     <div className="formBox">
                         <div className="formName"><p>Log In</p></div>
 
