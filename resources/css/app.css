@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
-@import './auth/signup.css';
+@import './authForms.css';
 
 body {
     width: 100vw;
