@@ -17,7 +17,7 @@ body {
     overflow: hidden;
 }
 
-p, a {
+p, a, input {
     margin: 0;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
