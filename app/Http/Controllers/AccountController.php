@@ -56,4 +56,24 @@ class AccountController extends Controller {
         if (session()->has('account')) return response()->json(['message' => 'User is already logged in', 'account' => session('account')], 200);
         return response()->json(['message' => 'User is not logged in'], 401);
     }
+
+    public function getShortUser() {
+        $user = Auth::user();
+
+        return response()->json([
+            'name' => $user->name,
+            'surname' => $user->surname,
+        ]);
+    }
+
+    public function getFullUser() {
+        return Auth::user();
+    }
+
+    public function deleteAccount() {
+        $user = Auth::user();
+        $user->delete();
+        Auth::logout();
+        return response()->json(['message' => 'Account deleted successfully']);
+    }
 }

@@ -17,7 +17,7 @@ class Workspaces extends Component {
 
     fetchUser = async () => {
         try {
-            const response = await fetch('/api/shortUser', {
+            const response = await fetch('/api/short-user', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -30,10 +30,10 @@ class Workspaces extends Component {
 
         }
         catch (err) { console.error(err.message) }
-    };
+    }
 
     logoutUser = async () => {
-        const response = await fetch('http://127.0.0.1:8000/logout', {
+        const response = await fetch('/logout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

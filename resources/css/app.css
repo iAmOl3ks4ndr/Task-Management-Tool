@@ -2,8 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
-@import './authForms.css';
-@import './dashboard/workspaces.css';
+@import './auth.css';
+@import './dashboard.css';
 
 * {
     user-select: none;
