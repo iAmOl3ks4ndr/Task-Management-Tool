@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
-import { createRoot } from 'react-dom/client';
+import React, { Component } from 'react'
+import { createRoot } from 'react-dom/client'
+
+import arrow from '../../icons/arrow.png'
+import edit from '../../icons/edit.png'
+import bin from '../../icons/bin.png'
 
 class Workspaces extends Component {
     constructor() {
@@ -26,7 +30,7 @@ class Workspaces extends Component {
             })
 
             const data = await response.json()
-            this.setState({name: data.name, surname: data.surname})
+            this.setState({ name: data.name, surname: data.surname })
 
         }
         catch (err) { console.error(err.message) }
@@ -70,6 +74,58 @@ class Workspaces extends Component {
                 <div className="sectionWelcome">
                     <p className="mainMessage">Welcome, {this.state.name} {this.state.surname}</p>
                     <p className="phraseText">Let's make the day!</p>
+                </div>
+
+                <div className="workspacesContainer">
+                    <div className="workspacesList">
+                        <p className="workspacesListTitle">My Workspaces</p>
+
+                        <div className="workspacesScrollList">
+                            <div className="workspaceElement">
+                                <div className="workspaceDataContainer">
+                                    <p className="workspaceTitle">My Project</p>
+                                    <p className="workspaceDescription">A website that is used as a tool to manage tasks. This website includes account system that works brilliant and there is...</p>
+                                    <div className="workspaceControls">
+                                        <img src={edit} />
+                                        <img src={bin} />
+                                    </div>
+                                </div>
+                                <div className="workspaceGoContainer">
+                                    <div className="workspaceGoToButton"><img src={arrow} /></div>
+                                </div>
+                            </div>
+
+                            <div className="workspaceElement">
+                                <div className="workspaceDataContainer">
+                                    <p className="workspaceTitle">My Project</p>
+                                    <p className="workspaceDescription">A website that is used as a tool to manage tasks. This website includes account system that works brilliant and there is...</p>
+                                    <div className="workspaceControls">
+                                        <img src={edit} />
+                                        <img src={bin} />
+                                    </div>
+                                </div>
+                                <div className="workspaceGoContainer">
+                                    <div className="workspaceGoToButton"><img src={arrow} /></div>
+                                </div>
+                            </div>
+
+                            <div className="workspaceElement">
+                                <div className="workspaceDataContainer">
+                                    <p className="workspaceTitle">My Project</p>
+                                    <p className="workspaceDescription">A website that is used as a tool to manage tasks. This website includes account system that works brilliant and there is...</p>
+                                    <div className="workspaceControls">
+                                        <img src={edit} />
+                                        <img src={bin} />
+                                    </div>
+                                </div>
+                                <div className="workspaceGoContainer">
+                                    <div className="workspaceGoToButton"><img src={arrow} /></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input className="newWorkspaceButton btn btn-primary" type="button" value="Create New Workspace" />
+                    </div>
                 </div>
             </>
         )

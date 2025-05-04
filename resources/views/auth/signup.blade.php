@@ -7,7 +7,7 @@
 
         <title>Task Management Tool - Sign Up</title>
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/auth.css', 'resources/js/app.js'])
     </head>
     <body>
         <div class="signupForm" id="signupForm" data-login-url="{{ route('login') }}"></div>  

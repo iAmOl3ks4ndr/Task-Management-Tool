@@ -8,7 +8,7 @@
         <title>Task Management Tool - Log In</title>
 
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/auth.css', 'resources/js/app.js'])
     </head>
     <body>
         <div class="loginForm" id="loginForm" data-signup-url="{{ route('signup') }}"></div>

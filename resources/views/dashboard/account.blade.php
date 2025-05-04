@@ -8,7 +8,7 @@
         <title>Task Management Tool - My Account</title>
 
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/dashboard.css', 'resources/js/app.js'])
     </head>
     <body>
         <div id="accountPage"></div>

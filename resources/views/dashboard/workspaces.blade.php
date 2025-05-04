@@ -8,7 +8,7 @@
         <title>Task Management Tool - My Workspaces</title>
 
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/dashboard.css', 'resources/js/app.js'])
     </head>
     <body>
         <div id="workspacesPage"></div>
