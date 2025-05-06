@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->string('description', 100)->nullable();
             $table->tinyInteger('priority_level');
             $table->tinyInteger('stage');
-            $table->timestamps();
             $table->unsignedBigInteger('workspace_id')->references('id')->on('workspaces')->onDelete('cascade');
         });
     }

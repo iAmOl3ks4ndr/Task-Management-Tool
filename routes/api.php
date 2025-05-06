@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\WorkspaceController;
 use Illuminate\Support\Facades\Auth;
 
 Route::post('/signup', [AccountController::class, 'signup']);
@@ -10,3 +11,4 @@ Route::get('/check-login', [AccountController::class, 'checkLogin']);
 Route::get('/short-user', [AccountController::class, 'getShortUser'])->middleware('web');
 Route::get('/full-user', [AccountController::class, 'getFullUser'])->middleware('web');
 Route::delete('/delete-account', [AccountController::class, 'deleteAccount'])->middleware('web');
+Route::get('/get-workspaces', [WorkspaceController::class, 'getWorkspaces'])->middleware('web');

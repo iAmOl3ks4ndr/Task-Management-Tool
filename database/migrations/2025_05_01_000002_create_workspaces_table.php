@@ -9,9 +9,7 @@ return new class extends Migration {
         Schema::create('workspaces', function (Blueprint $table) {
             $table->id();
             $table->string('title', 50);
-            $table->string('description', 100)->nullable();
-            $table->dateTime('deadline');
-            $table->timestamps();
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('user_id')->references('id')->on('accounts')->onDelete('cascade');
         });
     }

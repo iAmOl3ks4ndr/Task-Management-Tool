@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import arrow from '../../icons/arrow.png'
+import info from '../../icons/info.png'
 import edit from '../../icons/edit.png'
 import bin from '../../icons/bin.png'
 
@@ -11,12 +12,14 @@ class Workspaces extends Component {
 
         this.state = {
             name: "",
-            surname: ""
+            surname: "",
+            workspaces: []
         }
     }
 
     componentDidMount() {
         this.fetchUser()
+        this.fetchWorkspaces()
     }
 
     fetchUser = async () => {
@@ -31,6 +34,24 @@ class Workspaces extends Component {
 
             const data = await response.json()
             this.setState({ name: data.name, surname: data.surname })
+
+        }
+        catch (err) { console.error(err.message) }
+    }
+
+    fetchWorkspaces = async () => {
+        try {
+            const response = await fetch('/api/get-workspaces', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            })
+
+            const data = await response.json()
+            console.log(data)
+            this.setState({ workspaces: data })
 
         }
         catch (err) { console.error(err.message) }
@@ -81,47 +102,25 @@ class Workspaces extends Component {
                         <p className="workspacesListTitle">My Workspaces</p>
 
                         <div className="workspacesScrollList">
-                            <div className="workspaceElement">
-                                <div className="workspaceDataContainer">
-                                    <p className="workspaceTitle">My Project</p>
-                                    <p className="workspaceDescription">A website that is used as a tool to manage tasks. This website includes account system that works brilliant and there is...</p>
-                                    <div className="workspaceControls">
-                                        <img src={edit} />
-                                        <img src={bin} />
+                            {this.state.workspaces.length === 0 ? (
+                                <p className="noWorkspacesMessage">There is currently no any workspaces</p>
+                            ) : (
+                                this.state.workspaces.map((workspace, index) => (
+                                    <div className="workspaceElement" key={index}>
+                                        <div className="workspaceDataContainer">
+                                            <p className="workspaceTitle">{(workspace.title.length < 20) ? workspace.title : (workspace.title.substring(0, 20) + "...")}</p>
+                                            <p className="workspaceDescription">{(workspace.description.length < 130) ? workspace.description : (workspace.description.substring(0, 130) + "...")}</p>
+                                            <div className="workspaceControls">
+                                                <img src={info} />
+                                                <img src={edit} />
+                                                <img src={bin} />
+                                            </div>
+                                        </div>
+                                        <div className="workspaceGoContainer">
+                                            <div className="workspaceGoToButton"><img src={arrow} /></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="workspaceGoContainer">
-                                    <div className="workspaceGoToButton"><img src={arrow} /></div>
-                                </div>
-                            </div>
-
-                            <div className="workspaceElement">
-                                <div className="workspaceDataContainer">
-                                    <p className="workspaceTitle">My Project</p>
-                                    <p className="workspaceDescription">A website that is used as a tool to manage tasks. This website includes account system that works brilliant and there is...</p>
-                                    <div className="workspaceControls">
-                                        <img src={edit} />
-                                        <img src={bin} />
-                                    </div>
-                                </div>
-                                <div className="workspaceGoContainer">
-                                    <div className="workspaceGoToButton"><img src={arrow} /></div>
-                                </div>
-                            </div>
-
-                            <div className="workspaceElement">
-                                <div className="workspaceDataContainer">
-                                    <p className="workspaceTitle">My Project</p>
-                                    <p className="workspaceDescription">A website that is used as a tool to manage tasks. This website includes account system that works brilliant and there is...</p>
-                                    <div className="workspaceControls">
-                                        <img src={edit} />
-                                        <img src={bin} />
-                                    </div>
-                                </div>
-                                <div className="workspaceGoContainer">
-                                    <div className="workspaceGoToButton"><img src={arrow} /></div>
-                                </div>
-                            </div>
+                                )))}
                         </div>
 
                         <input className="newWorkspaceButton btn btn-primary" type="button" value="Create New Workspace" />
