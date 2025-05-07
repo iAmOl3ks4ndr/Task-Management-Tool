@@ -182,6 +182,7 @@ body { overflow: hidden; }
     align-items: center;
     justify-content: center;
     transition: transform 0.25s ease;
+    flex: 0 0 auto;
 }
 
 .addTaskButton:hover {
@@ -224,6 +225,7 @@ body { overflow: hidden; }
     color: transparent;
     background: linear-gradient(45deg, #ff416c, #dcff41);
     background-clip: text;
+    text-shadow: none;
 }
 
 .tasksModalForm {
@@ -235,7 +237,7 @@ body { overflow: hidden; }
     justify-content: space-evenly;
 }
 
-.taskNameInput, .taskDescriptionInput {
+.taskNameInput, .taskDescriptionInput, .taskPriorityInput {
     width: 100%;
     height: 45px;
     padding: 0 15px 0 15px;
@@ -257,7 +259,12 @@ body { overflow: hidden; }
     padding: 10px 15px 10px 15px;
 }
 
-.tasksModalForm:focus, .taskDescriptionInput:focus {
+.taskPriorityInput {
+    width: 125px;
+    margin-left: 5px;
+}
+
+.taskNameInput:focus, .taskDescriptionInput:focus, .taskPriorityInput:focus {
     outline: none;
     border: 1px solid #aaa;
     box-shadow: none;
@@ -292,7 +299,10 @@ body { overflow: hidden; }
 }
 
 .taskPriorityContainer {
+    min-width: 55px;
+    width: auto;
     display: flex;
+    align-items: center;
 }
 
 .taskPriorityContainer p {
@@ -301,4 +311,43 @@ body { overflow: hidden; }
 
 .taskPriorityLabel {
     margin-right: 5px;
+}
+
+.labelWithInput {
+    width: 110px;
+}
+
+.lowPriority {
+    color: #00ff00;
+    text-shadow: 0 0 1px #00ff00, 0 0 3px #00ff00;
+}
+
+.mediumPriority {
+    color: #f2ff00;
+    text-shadow: 0 0 1px #f2ff00, 0 0 3px #f2ff00;
+}
+
+.highPriority {
+    color: #ff0000;
+    text-shadow: 0 0 2px #ff0000, 0 0 4px #ff0000;
+}
+
+.tasksModalControls {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.createTaskButton {
+    width: 125px;
+    background-color: #1eb226;
+}
+
+.createTaskButton:hover {
+    background-color: #18c921;
+}
+
+.createTaskButton:active {
+    background-color: #1d9b23 !important;
 }

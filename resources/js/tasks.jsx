@@ -18,7 +18,8 @@ class Tasks extends Component {
             whichModal: 0,
             taskName: "",
             taskDescription: "",
-            taskPriority: 0
+            taskPriority: 0,
+            taskPriorityInputValue: 0
         }
     }
 
@@ -69,7 +70,7 @@ class Tasks extends Component {
         })
 
         const data = await response.json()
-        
+
         if (response.status === 201) window.location.reload(true)
         else console.log(data.message)
     }
@@ -109,7 +110,8 @@ class Tasks extends Component {
     }
 
     displayModal(which, taskId = -1) {
-        if (which === 0) this.setState({ taskName: "", taskDescription: "", taskPriority: 0 })
+        if (which === 0) this.setState({ taskName: "", taskDescription: "", taskPriority: 0, taskPriorityInputValue: 0 })
+        else if (which === 1) this.setState({ taskPriorityInputValue: 1 })
         else if (which === 2) {
             for (const task of this.state.tasks) {
                 if (task.id === taskId) {
@@ -122,8 +124,32 @@ class Tasks extends Component {
         this.setState({ whichModal: which })
     }
 
+    createTask = async () => {
+        const response = await fetch('/api/create-task', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                name: (this.state.taskName.length === 0) ? "Unnamed Task" : this.state.taskName,
+                description: this.state.taskDescription,
+                priorityLevel: this.state.taskPriorityInputValue,
+                stage: 1,
+                workspaceId: this.state.workspaceId
+            })
+        })
+
+        const data = await response.json()
+
+        if (response.status === 201) window.location.reload(true)
+        else console.log(data.message)
+    }
+
     render() {
-        let taskPriorityValueElement;
+        let taskPriorityValueElement = null;
 
         switch (this.state.taskPriority) {
             case 1:
@@ -141,7 +167,7 @@ class Tasks extends Component {
             <>
                 <div className="tasksModalBackground" style={{ display: (this.state.whichModal === 0) ? "none" : "flex" }}>
                     <div className="tasksModal">
-                        <p className="tasksModalTitle">Task Details</p>
+                        <p className="tasksModalTitle">{(this.state.whichModal === 1) ? "Create New Task" : "Task Details"}</p>
 
                         <div className="tasksModalForm">
                             <input
@@ -149,27 +175,36 @@ class Tasks extends Component {
                                 type="text"
                                 name="taskName"
                                 placeholder="Task Name"
+                                maxLength={50}
                                 value={this.state.taskName}
                                 onChange={this.handleInputChange}
-                                disabled
+                                disabled={this.state.whichModal === 2}
                             />
                             <textarea
                                 className="taskDescriptionInput"
                                 type="text"
                                 name="taskDescription"
                                 placeholder="Task Description"
-                                value={this.state.taskDescription}
+                                maxLength={255}
+                                value={(this.state.taskDescription === null) ? "No description" : this.state.taskDescription}
                                 onChange={this.handleInputChange}
-                                disabled
+                                disabled={this.state.whichModal === 2}
                             />
                             <div className="taskPriorityContainer">
                                 <p className="taskPriorityLabel">Priority: </p>
-                                {taskPriorityValueElement}
+                                {(taskPriorityValueElement !== null) ? taskPriorityValueElement :
+                                    <select className="taskPriorityInput" name="taskPriorityInputValue" value={this.state.taskPriorityInputValue} onChange={this.handleInputChange}>
+                                        <option value="1">Low</option>
+                                        <option value="2">Medium</option>
+                                        <option value="3">High</option>
+                                    </select>
+                                }
                             </div>
                         </div>
 
                         <div className="tasksModalControls">
                             <input className="modalButtons btn btn-primary" type="button" value="Close" onClick={() => this.displayModal(0)} />
+                            {(this.state.whichModal !== 1) ? "" : <input className="modalButtons createTaskButton btn btn-primary" type="button" value="Create Task" onClick={this.createTask} />}
                         </div>
                     </div>
                 </div>
@@ -207,7 +242,7 @@ class Tasks extends Component {
                             })
                         }
 
-                        <div className="addTaskButton"><img src={add} /></div>
+                        <div className="addTaskButton" onClick={() => this.displayModal(1)}><img src={add} /></div>
                     </div>
 
                     <div className="column">
