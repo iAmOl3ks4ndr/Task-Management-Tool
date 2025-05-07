@@ -16,4 +16,16 @@ class TaskController extends Controller {
         $task->delete();
         return response()->json(['message' => 'Task deleted successfully'], 201);
     }
+
+    public function taskToNextStage($taskId) {
+        $task = Task::find($taskId);
+        $task->increment('stage');
+        return response()->json(['message' => 'Task moved to the next stage successfully'], 201);
+    }
+
+    public function taskToPreviousStage($taskId) {
+        $task = Task::find($taskId);
+        $task->decrement('stage');
+        return response()->json(['message' => 'Task moved to the previous stage successfully'], 201);
+    }
 }

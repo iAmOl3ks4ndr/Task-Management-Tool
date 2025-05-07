@@ -19,3 +19,5 @@ Route::delete('/delete-workspace/{workspaceId}', [WorkspaceController::class, 'd
 
 Route::get('/get-tasks/{workspaceId}', [TaskController::class, 'getTasks'])->middleware('web');
 Route::delete('/delete-task/{taskId}', [TaskController::class, 'deleteTask'])->middleware('web');
+Route::put('/task-to-next-stage/{taskId}', [TaskController::class, 'taskToNextStage'])->middleware('web');
+Route::put('/task-to-previous-stage/{taskId}', [TaskController::class, 'taskToPreviousStage'])->middleware('web');
