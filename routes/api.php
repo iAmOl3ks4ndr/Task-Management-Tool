@@ -13,3 +13,5 @@ Route::delete('/delete-account', [AccountController::class, 'deleteAccount'])->m
 
 Route::get('/get-workspaces', [WorkspaceController::class, 'getWorkspaces'])->middleware('web');
 Route::post('/create-workspace', [WorkspaceController::class, 'createWorkspace'])->middleware('web');
+Route::put('/modify-workspace/{workspaceId}', [WorkspaceController::class, 'modifyWorkspace'])->middleware('web');
+Route::delete('/delete-workspace/{workspaceId}', [WorkspaceController::class, 'deleteWorkspace'])->middleware('web');

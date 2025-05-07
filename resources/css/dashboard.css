@@ -448,3 +448,37 @@ body {
 .createButton:active {
     background-color: #1d9b23 !important;
 }
+
+.modifyButton, .deleteButton {
+    width: 175px;
+}
+
+.modifyButton {
+    background-color: #e0a801;
+}
+
+.modifyButton:hover {
+    background-color: #f9bb00;
+}
+
+.modifyButton:active {
+    background-color: #c99700 !important;
+}
+
+.deleteWorkspaceMessage {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+
+.deleteButton {
+    background-color: #bc0000;
+}
+
+.deleteButton:hover {
+    background-color: #d60000;
+}
+
+.deleteButton:active {
+    background-color: #a30000 !important;
+}
