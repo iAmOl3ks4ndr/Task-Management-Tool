@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\WorkspaceController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 
 Route::post('/signup', [AccountController::class, 'signup']);
@@ -15,3 +16,5 @@ Route::get('/get-workspaces', [WorkspaceController::class, 'getWorkspaces'])->mi
 Route::post('/create-workspace', [WorkspaceController::class, 'createWorkspace'])->middleware('web');
 Route::put('/modify-workspace/{workspaceId}', [WorkspaceController::class, 'modifyWorkspace'])->middleware('web');
 Route::delete('/delete-workspace/{workspaceId}', [WorkspaceController::class, 'deleteWorkspace'])->middleware('web');
+
+Route::get('/get-tasks/{workspaceId}', [TaskController::class, 'getTasks'])->middleware('web');

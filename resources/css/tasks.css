@@ -168,18 +168,14 @@ body { overflow: hidden; }
     transform: rotate(180deg);
 }
 
-.taskButtonInactive {
-    opacity: 0.5;
-}
-
-.taskButtonInactive:hover {
-    cursor: default;
-    transform: scale(1);
+.column:nth-of-type(1) .taskButton:nth-of-type(1) img {
+    transform: rotate(0deg);
 }
 
 .addTaskButton {
     width: 64px;
     height: 64px;
+    margin: 25px 0 25px 0;
     border-radius: 50px;
     background-color: #323232;
     display: flex;

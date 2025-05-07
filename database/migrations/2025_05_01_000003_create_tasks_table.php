@@ -12,7 +12,8 @@ return new class extends Migration {
             $table->string('description', 100)->nullable();
             $table->tinyInteger('priority_level');
             $table->tinyInteger('stage');
-            $table->unsignedBigInteger('workspace_id')->references('id')->on('workspaces')->onDelete('cascade');
+            $table->unsignedBigInteger('workspace_id');
+            $table->foreign('workspace_id')->references('id')->on('workspaces')->onDelete('cascade');
         });
     }
 

@@ -12,12 +12,19 @@ class Tasks extends Component {
 
         this.state = {
             workspaceId: -1,
-            workspaceName: ""
+            workspaceName: "",
+            tasks: []
         }
     }
 
     componentDidMount() {
-        if (localStorage.getItem('workspaceId') && localStorage.getItem('workspaceName')) this.setState({ workspaceId: localStorage.getItem('workspaceId'), workspaceName: localStorage.getItem('workspaceName') })
+        if (localStorage.getItem('workspaceId') && localStorage.getItem('workspaceName')) {
+            this.setState(
+                {
+                    workspaceId: localStorage.getItem('workspaceId'),
+                    workspaceName: localStorage.getItem('workspaceName')
+                }, () => { this.fetchTasks() })
+        }
         else window.location.href = '/workspaces'
     }
 
@@ -27,9 +34,23 @@ class Tasks extends Component {
         window.location.href = '/workspaces'
     }
 
-    render() {
-        let taskName = "Task Name"
+    fetchTasks = async () => {
+        try {
+            const response = await fetch(`/api/get-tasks/${this.state.workspaceId}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            })
 
+            const data = await response.json()
+            this.setState({ tasks: data })
+        }
+        catch (err) { console.error(err.message) }
+    }
+
+    render() {
         return (
             <>
                 <nav className="workspaceMenu">
@@ -50,64 +71,93 @@ class Tasks extends Component {
 
                 <div className="columnsContainer">
                     <div className="column">
-                        <div className="taskContainer">
-                            <p>{(taskName.length > 50) ? taskName.substring(0, 50) + "..." : taskName}</p>
-                            <div className="taskControls">
-                                <div className="taskButton taskButtonInactive"><img src={arrow} /></div>
-                                <div className="taskButton"><img src={bin} /></div>
-                                <div className="taskButton"><img src={info} /></div>
-                                <div className="taskButton"><img src={arrow} /></div>
-                            </div>
-                        </div>
+                        {
+                            this.state.tasks.map((task, index) => {
+                                return (task.stage === 1) ?
+                                    <div className="taskContainer" key={index}>
+                                        <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
+                                        <div className="taskControls">
+                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            })
+                        }
+
                         <div className="addTaskButton"><img src={add} /></div>
                     </div>
 
                     <div className="column">
-                        <div className="taskContainer">
-                            <p>{(taskName.length > 50) ? taskName.substring(0, 50) + "..." : taskName}</p>
-                            <div className="taskControls">
-                                <div className="taskButton"><img src={arrow} /></div>
-                                <div className="taskButton"><img src={bin} /></div>
-                                <div className="taskButton"><img src={info} /></div>
-                                <div className="taskButton"><img src={arrow} /></div>
-                            </div>
-                        </div>
+                        {
+                            this.state.tasks.map((task, index) => {
+                                return (task.stage === 2) ?
+                                    <div className="taskContainer" key={index}>
+                                        <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
+                                        <div className="taskControls">
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            })
+                        }
                     </div>
 
                     <div className="column">
-                        <div className="taskContainer">
-                            <p>{(taskName.length > 50) ? taskName.substring(0, 50) + "..." : taskName}</p>
-                            <div className="taskControls">
-                                <div className="taskButton"><img src={arrow} /></div>
-                                <div className="taskButton"><img src={bin} /></div>
-                                <div className="taskButton"><img src={info} /></div>
-                                <div className="taskButton"><img src={arrow} /></div>
-                            </div>
-                        </div>
+                        {
+                            this.state.tasks.map((task, index) => {
+                                return (task.stage === 3) ?
+                                    <div className="taskContainer" key={index}>
+                                        <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
+                                        <div className="taskControls">
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            })
+                        }
                     </div>
 
                     <div className="column">
-                        <div className="taskContainer">
-                            <p>{(taskName.length > 50) ? taskName.substring(0, 50) + "..." : taskName}</p>
-                            <div className="taskControls">
-                                <div className="taskButton"><img src={arrow} /></div>
-                                <div className="taskButton"><img src={bin} /></div>
-                                <div className="taskButton"><img src={info} /></div>
-                                <div className="taskButton"><img src={arrow} /></div>
-                            </div>
-                        </div>
+                        {
+                            this.state.tasks.map((task, index) => {
+                                return (task.stage === 4) ?
+                                    <div className="taskContainer" key={index}>
+                                        <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
+                                        <div className="taskControls">
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            })
+                        }
                     </div>
 
                     <div className="column">
-                        <div className="taskContainer">
-                            <p>{(taskName.length > 50) ? taskName.substring(0, 50) + "..." : taskName}</p>
-                            <div className="taskControls">
-                                <div className="taskButton"><img src={arrow} /></div>
-                                <div className="taskButton"><img src={bin} /></div>
-                                <div className="taskButton"><img src={info} /></div>
-                                <div className="taskButton taskButtonInactive"><img src={arrow} /></div>
-                            </div>
-                        </div>
+                        {
+                            this.state.tasks.map((task, index) => {
+                                return (task.stage === 5) ?
+                                    <div className="taskContainer" key={index}>
+                                        <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
+                                        <div className="taskControls">
+                                            <div className="taskButton"><img src={arrow} /></div>
+                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton"><img src={info} /></div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            })
+                        }
                     </div>
                 </div>
             </>

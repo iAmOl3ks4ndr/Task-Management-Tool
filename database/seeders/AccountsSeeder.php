@@ -30,6 +30,13 @@ class AccountsSeeder extends Seeder {
                 'surname' => "O'Reilly",
                 'email' => "dylan.oreilly@gmail.com",
                 'password' => Hash::make("Zxczxc789$"),
+            ],
+            [
+                'id' => 4,
+                'name' => "Oleksandr",
+                'surname' => "Olefirenko",
+                'email' => "o.oleksandr.m@gmail.com",
+                'password' => Hash::make("Asdasd123$"),
             ]
         ]);
     }
