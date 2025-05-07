@@ -154,6 +154,12 @@ class Workspaces extends Component {
         else console.log(data.message)
     }
 
+    goToWorkspace(wsId, wsName) {
+        localStorage.setItem("workspaceId", wsId)
+        localStorage.setItem("workspaceName", wsName)
+        window.location.href = '/tasks'
+    }
+
     render() {
         let modalTitle = "", readOnlyInputs = (this.state.whichModal === 2), proceedButton = <></>
 
@@ -264,7 +270,7 @@ class Workspaces extends Component {
                                                 <img src={bin} onClick={() => this.displayModal(4, workspace.id)} />
                                             </div>
                                         </div>
-                                        <div className="workspaceGoContainer"><div className="workspaceGoToButton"><img src={arrow} /></div></div>
+                                        <div className="workspaceGoContainer"><div className="workspaceGoToButton" onClick={() => this.goToWorkspace(workspace.id, workspace.title)}><img src={arrow} /></div></div>
                                     </div>
                                 )))}
                         </div>

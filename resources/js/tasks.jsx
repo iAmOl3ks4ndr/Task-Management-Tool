@@ -4,11 +4,25 @@ import { createRoot } from 'react-dom/client';
 class Tasks extends Component {
     constructor() {
         super()
+
+        this.state = {
+            workspaceId: -1,
+            workspaceName: ""
+        }
+    }
+
+    componentDidMount() {
+        if (localStorage.getItem('workspaceId') && localStorage.getItem('workspaceName')) {
+            this.setState({ workspaceId: localStorage.getItem('workspaceId'), workspaceName: localStorage.getItem('workspaceName') })
+            localStorage.removeItem('workspaceId');
+            localStorage.removeItem('workspaceName');
+        }
+        else window.location.href = '/workspaces'
     }
 
     render() {
         return (
-            <p>This is the page of tasks</p>
+            <p>{this.state.workspaceName}, {this.state.workspaceId}</p>
         )
     }
 }

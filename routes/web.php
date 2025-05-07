@@ -28,9 +28,10 @@ Route::get('/account', function () {
 })->name('account');
 
 Route::get('/tasks', function () {
-    return view('tasks');
+    if (Auth::check()) return view('tasks');
+    return redirect()->route('login');
 })->name('tasks');
 
 Route::fallback(function () {
-    return redirect('/');
+    return redirect()->route('login');
 });
