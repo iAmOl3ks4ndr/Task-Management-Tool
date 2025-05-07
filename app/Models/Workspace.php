@@ -22,4 +22,8 @@ class Workspace extends Model {
     protected $casts = [
         'last_used' => 'datetime',
     ];
+
+    public function account() {
+        return $this->belongsTo(Account::class);
+    }
 }

@@ -19,4 +19,8 @@ class Account extends Authenticatable {
         'email',
         'password',
     ];
+
+    public function workspaces() {
+        return $this->hasMany(Workspace::class);
+    }
 }

@@ -11,7 +11,8 @@ return new class extends Migration {
             $table->string('title', 50);
             $table->string('description')->nullable();
             $table->dateTime('last_used');
-            $table->unsignedBigInteger('user_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('accounts')->onDelete('cascade');
         });
     }
 
