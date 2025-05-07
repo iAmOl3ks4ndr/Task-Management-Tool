@@ -27,10 +27,10 @@ Route::get('/account', function () {
     return redirect()->route('login');
 })->name('account');
 
+Route::get('/tasks', function () {
+    return view('tasks');
+})->name('tasks');
+
 Route::fallback(function () {
     return redirect('/');
 });
-
-Route::post('/login', [AccountController::class, 'login']);
-Route::post('/logout', [AccountController::class, 'logout']);
-Route::get('/check-login', [AccountController::class, 'checkLogin']);

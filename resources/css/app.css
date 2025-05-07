@@ -19,6 +19,7 @@ body {
 }
 
 p, a, input {
+    color: white;
     margin: 0;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;

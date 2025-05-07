@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Project Management Tool - Log In</title>
+        <title>Project Management Tool - Tasks</title>
 
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/css/auth.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/css/tasks.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="loginForm" id="loginForm" data-signup-url="{{ route('signup') }}"></div>
-        @vite(['resources/js/auth/login.jsx'])
+        <div id="tasksPage"></div>
+        @vite(['resources/js/tasks.jsx'])
     </body>
 </html>

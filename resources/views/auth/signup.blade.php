@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Task Management Tool - Sign Up</title>
+        <title>Project Management Tool - Sign Up</title>
 
+        @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/css/auth.css', 'resources/js/app.js'])
     </head>
     <body>

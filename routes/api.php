@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::post('/signup', [AccountController::class, 'signup']);
 Route::post('/login', [AccountController::class, 'login'])->middleware('web');
-Route::post('/logout', [AccountController::class, 'logout']);
+Route::post('/logout', [AccountController::class, 'logout'])->middleware('web');
 Route::get('/short-user', [AccountController::class, 'getShortUser'])->middleware('web');
 Route::get('/full-user', [AccountController::class, 'getFullUser'])->middleware('web');
 Route::delete('/delete-account', [AccountController::class, 'deleteAccount'])->middleware('web');
