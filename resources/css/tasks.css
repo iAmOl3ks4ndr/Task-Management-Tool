@@ -1,0 +1,200 @@
+body { overflow: hidden; }
+
+.workspaceMenu {
+    width: 100%;
+    height: 75px;
+    padding: 0 50px 0 50px;
+    background-color: #242424;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workspaceName {
+    width: 45%;
+    height: 100%;
+    font-size: 22px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.quitWorkspace {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.quitWorkspace a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: white !important;
+    font-size: 20px;
+}
+
+.quitWorkspace a:hover {
+    cursor: pointer;
+}
+
+.quitWorkspace a:active {
+    color: #ccc !important;
+}
+
+.quitWorkspace div {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.quitWorkspace a:hover ~ div {
+    transform: scaleX(1);
+}
+
+.columnNamesContainer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.columnName {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.columnName:nth-of-type(1) {
+    background-color: #4338ca;
+}
+
+.columnName:nth-of-type(2) {
+    background-color: #c7be17;
+}
+
+.columnName:nth-of-type(3) {
+    background-color: #1ea8b2;
+}
+
+.columnName:nth-of-type(4) {
+    background-color: #941eb2;
+}
+
+.columnName:nth-of-type(5) {
+    background-color: #1eb226;
+}
+
+.columnName p {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.columnsContainer {
+    width: 100%;
+    height: calc(100vh - 125px);
+    display: flex;
+}
+
+.column {
+    width: 20%;
+    height: 100%;
+    background-color: #242424;
+    box-shadow: 0 0 0 0.05px white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+}
+
+.taskContainer {
+    width: 85%;
+    height: 150px;
+    margin: 25px 0 25px 0;
+    padding: 15px;
+    flex: 0 0 auto;
+    background-color: #404040;
+    border-radius: 10px;
+}
+
+.taskContainer p {
+    height: 65%;
+    font-size: 18px;
+    word-break: break-all;
+}
+
+.taskControls {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.taskButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #242424;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.25s ease;
+}
+
+.taskButton:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.taskButton img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+.taskButton:nth-of-type(1) img {
+    transform: rotate(180deg);
+}
+
+.taskButtonInactive {
+    opacity: 0.5;
+}
+
+.taskButtonInactive:hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+.addTaskButton {
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
+    background-color: #323232;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease;
+}
+
+.addTaskButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.addTaskButton img {
+    width: 28px;
+    height: 28px;
+    filter: invert(1);
+}
