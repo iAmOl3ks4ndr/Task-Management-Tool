@@ -64,13 +64,12 @@ CREATE DATABASE project_management_tool;
 
 3. In the project folder, run:
 ```bash
-php artisan migrate
-php artisan db:seed
+php artisan migrate --seed
 ```
 
-- You can reset the database tables by running:
+- You can reset the database tables and values by running:
 ```bash
-php artisan migrate:refresh
+php artisan migrate:refresh --seed
 ```
 
 4. Run the application using:

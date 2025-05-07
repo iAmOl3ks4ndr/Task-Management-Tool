@@ -253,9 +253,9 @@ class Workspaces extends Component {
                                                 {
                                                     workspace.description === null
                                                         ? "No description"
-                                                        : workspace.description.length < 130
+                                                        : workspace.description.length < 125
                                                             ? workspace.description
-                                                            : workspace.description.substring(0, 130) + "..."
+                                                            : workspace.description.substring(0, 125) + "..."
                                                 }
                                             </p>
                                             <div className="workspaceControls">
