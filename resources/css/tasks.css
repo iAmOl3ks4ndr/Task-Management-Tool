@@ -194,3 +194,111 @@ body { overflow: hidden; }
     height: 28px;
     filter: invert(1);
 }
+
+.tasksModalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasksModal {
+    width: 700px;
+    height: 600px;
+    background-color: #323232;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.tasksModalTitle {
+    color: white;
+    font-size: 48px;
+    font-weight: 600;
+    color: transparent;
+    background: linear-gradient(45deg, #ff416c, #dcff41);
+    background-clip: text;
+}
+
+.tasksModalForm {
+    width: 85%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.taskNameInput, .taskDescriptionInput {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px 0 15px;
+    color: white;
+    background-color: #484848;
+    border: 0;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    resize: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.taskDescriptionInput {
+    height: 200px;
+    margin-top: 15px;
+    padding: 10px 15px 10px 15px;
+}
+
+.tasksModalForm:focus, .taskDescriptionInput:focus {
+    outline: none;
+    border: 1px solid #aaa;
+    box-shadow: none;
+}
+
+.modalControls {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modalButtons {
+    all: unset;
+    width: 100px;
+    height: 45px;
+    color: white;
+    text-align: center;
+    background-color: #484848;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+.modalButtons:hover {
+    cursor: pointer;
+    background-color: #565656;
+    transform: translateY(-5px);
+}
+
+.modalButtons:active {
+    background-color: #505050 !important;
+}
+
+.taskPriorityContainer {
+    display: flex;
+}
+
+.taskPriorityContainer p {
+    font-size: 18px;
+}
+
+.taskPriorityLabel {
+    margin-right: 5px;
+}

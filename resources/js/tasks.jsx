@@ -13,7 +13,12 @@ class Tasks extends Component {
         this.state = {
             workspaceId: -1,
             workspaceName: "",
-            tasks: []
+            tasks: [],
+
+            whichModal: 0,
+            taskName: "",
+            taskDescription: "",
+            taskPriority: 0
         }
     }
 
@@ -27,6 +32,8 @@ class Tasks extends Component {
         }
         else window.location.href = '/workspaces'
     }
+
+    handleInputChange = (e) => this.setState({ [e.target.name]: e.target.value })
 
     quitWorkspace() {
         localStorage.removeItem("workspaceId")
@@ -101,9 +108,72 @@ class Tasks extends Component {
         else console.log(data.message)
     }
 
+    displayModal(which, taskId = -1) {
+        if (which === 0) this.setState({ taskName: "", taskDescription: "", taskPriority: 0 })
+        else if (which === 2) {
+            for (const task of this.state.tasks) {
+                if (task.id === taskId) {
+                    this.setState({ taskName: task.name, taskDescription: task.description, taskPriority: task.priority_level })
+                    break;
+                }
+            }
+        }
+
+        this.setState({ whichModal: which })
+    }
+
     render() {
+        let taskPriorityValueElement;
+
+        switch (this.state.taskPriority) {
+            case 1:
+                taskPriorityValueElement = <p className="taskPriority lowPriority">Low</p>
+                break;
+            case 2:
+                taskPriorityValueElement = <p className="taskPriority mediumPriority">Medium</p>
+                break;
+            case 3:
+                taskPriorityValueElement = <p className="taskPriority highPriority">High</p>
+                break;
+        }
+
         return (
             <>
+                <div className="tasksModalBackground" style={{ display: (this.state.whichModal === 0) ? "none" : "flex" }}>
+                    <div className="tasksModal">
+                        <p className="tasksModalTitle">Task Details</p>
+
+                        <div className="tasksModalForm">
+                            <input
+                                className="taskNameInput"
+                                type="text"
+                                name="taskName"
+                                placeholder="Task Name"
+                                value={this.state.taskName}
+                                onChange={this.handleInputChange}
+                                disabled
+                            />
+                            <textarea
+                                className="taskDescriptionInput"
+                                type="text"
+                                name="taskDescription"
+                                placeholder="Task Description"
+                                value={this.state.taskDescription}
+                                onChange={this.handleInputChange}
+                                disabled
+                            />
+                            <div className="taskPriorityContainer">
+                                <p className="taskPriorityLabel">Priority: </p>
+                                {taskPriorityValueElement}
+                            </div>
+                        </div>
+
+                        <div className="tasksModalControls">
+                            <input className="modalButtons btn btn-primary" type="button" value="Close" onClick={() => this.displayModal(0)} />
+                        </div>
+                    </div>
+                </div>
+
                 <nav className="workspaceMenu">
                     <p className="workspaceName">{this.state.workspaceName}</p>
                     <div className="quitWorkspace">
@@ -129,7 +199,7 @@ class Tasks extends Component {
                                         <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
                                         <div className="taskControls">
                                             <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
-                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton" onClick={() => this.displayModal(2, task.id)}><img src={info} /></div>
                                             <div className="taskButton" onClick={() => this.toNextStage(task.id)}><img src={arrow} /></div>
                                         </div>
                                     </div>
@@ -149,7 +219,7 @@ class Tasks extends Component {
                                         <div className="taskControls">
                                             <div className="taskButton" onClick={() => this.toPreviousStage(task.id)}><img src={arrow} /></div>
                                             <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
-                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton" onClick={() => this.displayModal(2, task.id)}><img src={info} /></div>
                                             <div className="taskButton" onClick={() => this.toNextStage(task.id)}><img src={arrow} /></div>
                                         </div>
                                     </div>
@@ -167,7 +237,7 @@ class Tasks extends Component {
                                         <div className="taskControls">
                                             <div className="taskButton" onClick={() => this.toPreviousStage(task.id)}><img src={arrow} /></div>
                                             <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
-                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton" onClick={() => this.displayModal(2, task.id)}><img src={info} /></div>
                                             <div className="taskButton" onClick={() => this.toNextStage(task.id)}><img src={arrow} /></div>
                                         </div>
                                     </div>
@@ -185,7 +255,7 @@ class Tasks extends Component {
                                         <div className="taskControls">
                                             <div className="taskButton" onClick={() => this.toPreviousStage(task.id)}><img src={arrow} /></div>
                                             <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
-                                            <div className="taskButton"><img src={info} /></div>
+                                            <div className="taskButton" onClick={() => this.displayModal(2, task.id)}><img src={info} /></div>
                                             <div className="taskButton" onClick={() => this.toNextStage(task.id)}><img src={arrow} /></div>
                                         </div>
                                     </div>
@@ -203,7 +273,7 @@ class Tasks extends Component {
                                         <div className="taskControls">
                                             <div className="taskButton" onClick={() => this.toPreviousStage(task.id)}><img src={arrow} /></div>
                                             <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
-                                            <div className="taskButton" onClick={() => this.toNextStage(task.id)}><img src={arrow} /></div>
+                                            <div className="taskButton" onClick={() => this.displayModal(2, task.id)}><img src={info} /></div>
                                         </div>
                                     </div>
                                     : ""
