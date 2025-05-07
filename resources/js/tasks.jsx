@@ -50,6 +50,23 @@ class Tasks extends Component {
         catch (err) { console.error(err.message) }
     }
 
+    deleteTask = async (taskToDelete) => {
+        const response = await fetch(`/api/delete-task/${taskToDelete}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            },
+            credentials: 'include',
+        })
+
+        const data = await response.json()
+        
+        if (response.status === 201) window.location.reload(true)
+        else console.log(data.message)
+    }
+
     render() {
         return (
             <>
@@ -77,7 +94,7 @@ class Tasks extends Component {
                                     <div className="taskContainer" key={index}>
                                         <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
                                         <div className="taskControls">
-                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
                                             <div className="taskButton"><img src={info} /></div>
                                             <div className="taskButton"><img src={arrow} /></div>
                                         </div>
@@ -97,7 +114,7 @@ class Tasks extends Component {
                                         <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
                                         <div className="taskControls">
                                             <div className="taskButton"><img src={arrow} /></div>
-                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
                                             <div className="taskButton"><img src={info} /></div>
                                             <div className="taskButton"><img src={arrow} /></div>
                                         </div>
@@ -115,7 +132,7 @@ class Tasks extends Component {
                                         <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
                                         <div className="taskControls">
                                             <div className="taskButton"><img src={arrow} /></div>
-                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
                                             <div className="taskButton"><img src={info} /></div>
                                             <div className="taskButton"><img src={arrow} /></div>
                                         </div>
@@ -133,7 +150,7 @@ class Tasks extends Component {
                                         <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
                                         <div className="taskControls">
                                             <div className="taskButton"><img src={arrow} /></div>
-                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
                                             <div className="taskButton"><img src={info} /></div>
                                             <div className="taskButton"><img src={arrow} /></div>
                                         </div>
@@ -151,7 +168,7 @@ class Tasks extends Component {
                                         <p>{(task.name.length > 50) ? task.name.substring(0, 50) + "..." : task.name}</p>
                                         <div className="taskControls">
                                             <div className="taskButton"><img src={arrow} /></div>
-                                            <div className="taskButton"><img src={bin} /></div>
+                                            <div className="taskButton" onClick={() => this.deleteTask(task.id)}><img src={bin} /></div>
                                             <div className="taskButton"><img src={info} /></div>
                                         </div>
                                     </div>

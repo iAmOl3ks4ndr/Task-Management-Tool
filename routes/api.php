@@ -18,3 +18,4 @@ Route::put('/modify-workspace/{workspaceId}', [WorkspaceController::class, 'modi
 Route::delete('/delete-workspace/{workspaceId}', [WorkspaceController::class, 'deleteWorkspace'])->middleware('web');
 
 Route::get('/get-tasks/{workspaceId}', [TaskController::class, 'getTasks'])->middleware('web');
+Route::delete('/delete-task/{taskId}', [TaskController::class, 'deleteTask'])->middleware('web');
