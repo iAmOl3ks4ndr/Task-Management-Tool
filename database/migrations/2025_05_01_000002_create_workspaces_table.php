@@ -10,6 +10,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title', 50);
             $table->string('description')->nullable();
+            $table->dateTime('last_used');
             $table->unsignedBigInteger('user_id')->references('id')->on('accounts')->onDelete('cascade');
         });
     }

@@ -71,17 +71,17 @@ body {
     font-size: 36px;
 }
 
-.modalBackground {
+.modalBackground, .workspacesModalBackground {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
+    position: fixed;
     z-index: 1;
     align-items: center;
     justify-content: center;
 }
 
-.confirmAccountDeleteModal {
+.confirmAccountDeleteModal, .workspacesModal {
     width: 700px;
     height: 600px;
     background-color: #323232;
@@ -92,7 +92,7 @@ body {
     justify-content: space-evenly;
 }
 
-.modalName {
+.modalName, .workspacesModalTitle {
     color: white;
     font-size: 48px;
     font-weight: 600;
@@ -101,7 +101,7 @@ body {
     background-clip: text;
 }
 
-.modalMessage {
+.modalMessage, .workspacesModalForm {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -395,4 +395,56 @@ body {
 .workspaceGoToButton img {
     width: 60%;
     height: 60%;
+}
+
+.workspacesModalForm {
+    width: 85%;
+}
+
+.workspaceNameInput, .workspaceDescriptionInput {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px 0 15px;
+    color: white;
+    background-color: #484848;
+    border: 0;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    resize: none;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.workspaceDescriptionInput {
+    height: 200px;
+    margin-top: 15px;
+    padding: 10px 15px 10px 15px;
+}
+
+.workspaceNameInput:focus, .workspaceDescriptionInput:focus {
+    outline: none;
+    border: 1px solid #aaa;
+    box-shadow: none;
+}
+
+.workspacesModalControls {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.createButton {
+    width: 175px;
+    background-color: #1eb226;
+}
+
+.createButton:hover {
+    background-color: #18c921;
+}
+
+.createButton:active {
+    background-color: #1d9b23 !important;
 }

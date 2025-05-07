@@ -52,11 +52,6 @@ class AccountController extends Controller {
         return response()->json(['message' => 'Logged out successfully'], 200);
     }
 
-    public function checkLogin() {
-        if (session()->has('account')) return response()->json(['message' => 'User is already logged in', 'account' => session('account')], 200);
-        return response()->json(['message' => 'User is not logged in'], 401);
-    }
-
     public function getShortUser() {
         $user = Auth::user();
 

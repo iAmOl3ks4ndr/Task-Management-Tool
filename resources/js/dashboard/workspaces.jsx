@@ -13,7 +13,11 @@ class Workspaces extends Component {
         this.state = {
             name: "",
             surname: "",
-            workspaces: []
+            workspaces: [],
+
+            whichModal: 0,
+            workspaceName: "",
+            workspaceDescription: "",
         }
     }
 
@@ -21,6 +25,8 @@ class Workspaces extends Component {
         this.fetchUser()
         this.fetchWorkspaces()
     }
+
+    handleInputChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
     fetchUser = async () => {
         try {
@@ -50,8 +56,8 @@ class Workspaces extends Component {
             })
 
             const data = await response.json()
-            console.log(data)
-            this.setState({ workspaces: data })
+            const sortedData = data.sort((a, b) => new Date(b.last_used) - new Date(a.last_used));
+            this.setState({ workspaces: sortedData })
 
         }
         catch (err) { console.error(err.message) }
@@ -74,9 +80,84 @@ class Workspaces extends Component {
         else console.error("Logout failed:", data.message)
     }
 
+    displayModal(which, workspaceId) {
+        if (which === 0) this.setState({ workspaceName: "", workspaceDescription: "" })
+        else if (which === 1 || which === 2) {
+            for (const workspace of this.state.workspaces) {
+                if (workspace.id === workspaceId) {
+                    this.setState({ workspaceName: workspace.title, workspaceDescription: workspace.description })
+                    break;
+                }
+            }
+        }
+
+        this.setState({ whichModal: which })
+    }
+
+    createWorkspace = async () => {
+        const response = await fetch('/api/create-workspace', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                title: (this.state.workspaceName.length === 0) ? "Unnamed Workspace" : this.state.workspaceName,
+                description: this.state.workspaceDescription
+            })
+        })
+    
+        const data = await response.json()
+    
+        if (response.status === 201) window.location.reload(true)
+        else this.setState({errorMessage: data.message})
+    }
+
     render() {
+        let modalTitle = "", readOnlyInputs = (this.state.whichModal === 2)
+
+        switch (this.state.whichModal) {
+            case 1:
+                modalTitle = "Create New Workspace"
+                break
+            case 2:
+                modalTitle = "Workspace Details"
+                break
+            case 3:
+                modalTitle = "Modify Workspace"
+                break
+            case 4:
+                modalTitle = "Delete Workspace"
+                break
+        }
+
         return (
             <>
+                <div className="workspacesModalBackground" style={{ display: (this.state.whichModal === 0) ? "none" : "flex" }}>
+                    <div className="workspacesModal">
+                        <p className="workspacesModalTitle">{modalTitle}</p>
+
+                        <div className="workspacesModalForm">
+                            {
+                                (this.state.whichModal !== 4) ?
+                                    <>
+                                        <input className="workspaceNameInput" type="text" name="workspaceName" placeholder="Workspace Name" maxLength={50} value={this.state.workspaceName} onChange={this.handleInputChange} disabled={readOnlyInputs} />
+                                        <textarea className="workspaceDescriptionInput" name="workspaceDescription" placeholder="Workspace Description" maxLength={255} value={this.state.workspaceDescription} onChange={this.handleInputChange} disabled={readOnlyInputs} />
+                                    </>
+                                    :
+                                    <></>
+                            }
+                        </div>
+
+                        <div className="workspacesModalControls">
+                            <input className="modalButtons btn btn-primary" type="button" value={(this.state.whichModal !== 2) ? "Cancel" : "Close"} onClick={() => this.displayModal(0, -1)} />
+                            {(this.state.whichModal === 1) ? <input className="modalButtons createButton btn btn-primary" type="button" value="Create Workspace" onClick={this.createWorkspace} /> : <></>}
+                        </div>
+                    </div>
+                </div>
+
                 <nav className="navigationBar">
                     <div className="section">
                         <a onClick={() => window.location.href = '/account'}>My Account</a>
@@ -103,7 +184,7 @@ class Workspaces extends Component {
 
                         <div className="workspacesScrollList">
                             {this.state.workspaces.length === 0 ? (
-                                <p className="noWorkspacesMessage">There is currently no any workspaces</p>
+                                <p className="noWorkspacesMessage">You do not have any workspaces. Create your first one!</p>
                             ) : (
                                 this.state.workspaces.map((workspace, index) => (
                                     <div className="workspaceElement" key={index}>
@@ -111,19 +192,17 @@ class Workspaces extends Component {
                                             <p className="workspaceTitle">{(workspace.title.length < 20) ? workspace.title : (workspace.title.substring(0, 20) + "...")}</p>
                                             <p className="workspaceDescription">{(workspace.description.length < 130) ? workspace.description : (workspace.description.substring(0, 130) + "...")}</p>
                                             <div className="workspaceControls">
-                                                <img src={info} />
+                                                <img src={info} onClick={() => this.displayModal(2, workspace.id)} />
                                                 <img src={edit} />
                                                 <img src={bin} />
                                             </div>
                                         </div>
-                                        <div className="workspaceGoContainer">
-                                            <div className="workspaceGoToButton"><img src={arrow} /></div>
-                                        </div>
+                                        <div className="workspaceGoContainer"><div className="workspaceGoToButton"><img src={arrow} /></div></div>
                                     </div>
                                 )))}
                         </div>
 
-                        <input className="newWorkspaceButton btn btn-primary" type="button" value="Create New Workspace" />
+                        <input className="newWorkspaceButton btn btn-primary" type="button" value="Create New Workspace" onClick={() => this.displayModal(1, -1)} />
                     </div>
                 </div>
             </>

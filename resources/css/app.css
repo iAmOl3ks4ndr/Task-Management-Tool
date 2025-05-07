@@ -5,6 +5,11 @@
     user-select: none;
 }
 
+input[readonly], textarea[readonly], input:disabled, textarea:disabled {
+    pointer-events: none;
+    user-select: none;
+}
+
 body {
     width: 100vw;
     height: 100vh;

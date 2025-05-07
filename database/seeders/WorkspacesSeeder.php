@@ -12,16 +12,19 @@ class WorkspacesSeeder extends Seeder {
             [
                 'title' => 'Welcome to Project Management Tool',
                 'description' => 'This is the tool that will help you organize and manage tasks. Create the first workspace for your project and get started. Happy productive day!',
+                'last_used' => now(),
                 'user_id' => 1,
             ],
             [
                 'title' => 'Welcome to Project Management Tool',
                 'description' => 'This is the tool that will help you organize and manage tasks. Create the first workspace for your project and get started. Happy productive day!',
+                'last_used' => now(),
                 'user_id' => 1,
             ],
             [
                 'title' => 'Welcome to Project Management Tool',
                 'description' => 'This is the tool that will help you organize and manage tasks. Create the first workspace for your project and get started. Happy productive day!',
+                'last_used' => now(),
                 'user_id' => 1,
             ],
         ]);
