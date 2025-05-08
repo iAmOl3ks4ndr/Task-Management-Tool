@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     public function boot(): void {
+        if (app()->environment('production')) {
+            \URL::forceScheme('https');
+        }
+        
         Route::prefix('api')
         ->namespace('App\Http\Controllers')
         ->group(base_path('routes/api.php'));
