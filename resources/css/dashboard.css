@@ -64,6 +64,7 @@ body {
     background-clip: text;
     font-size: 48px;
     font-weight: 600;
+    text-shadow: none;
 }
 
 .phraseText {
@@ -99,6 +100,7 @@ body {
     color: transparent;
     background: linear-gradient(45deg, #ff416c, #dcff41);
     background-clip: text;
+    text-shadow: none;
 }
 
 .modalMessage, .workspacesModalForm {

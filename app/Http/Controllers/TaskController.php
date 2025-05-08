@@ -36,7 +36,7 @@ class TaskController extends Controller {
             'name' => 'required|string|max:50',
             'description' => 'nullable|string|max:255',
             'priorityLevel' => 'required|integer|min:1|max:3',
-            'stage' => 'required|integer|in:1'
+            'stage' => 'required|integer|min:1|max:5'
         ]);
 
         if ($validator->fails()) return response()->json($validator->errors(), 422);

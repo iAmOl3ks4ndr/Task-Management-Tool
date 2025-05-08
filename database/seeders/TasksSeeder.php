@@ -10,110 +10,320 @@ class TasksSeeder extends Seeder {
     public function run(): void {
         DB::table('tasks')->insert([
             [
-                'name' => 'Task #1',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 1,
                 'stage' => 1,
-                'workspace_id' => 10,
+                'workspace_id' => 1
             ],
             [
-                'name' => 'Task #2',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 2,
+                'stage' => 2,
+                'workspace_id' => 1
+            ],
+            [
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 3,
+                'stage' => 3,
+                'workspace_id' => 1
+            ],
+            [
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 1
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 1
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
                 'stage' => 1,
-                'workspace_id' => 10,
+                'workspace_id' => 2
             ],
             [
-                'name' => 'Task #3',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 2,
+                'workspace_id' => 2
+            ],
+            [
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 3,
+                'stage' => 3,
+                'workspace_id' => 2
+            ],
+            [
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 2
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 2
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
                 'stage' => 1,
-                'workspace_id' => 10,
+                'workspace_id' => 3
             ],
             [
-                'name' => 'Task #4',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 2,
                 'stage' => 2,
-                'workspace_id' => 10,
+                'workspace_id' => 3
             ],
             [
-                'name' => 'Task #5',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 3,
+                'stage' => 3,
+                'workspace_id' => 3
+            ],
+            [
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 3
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 3
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 1,
+                'workspace_id' => 4
+            ],
+            [
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
                 'stage' => 2,
-                'workspace_id' => 10,
+                'workspace_id' => 4
             ],
             [
-                'name' => 'Task #6',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 3,
+                'stage' => 3,
+                'workspace_id' => 4
+            ],
+            [
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 4
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 4
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 1,
+                'workspace_id' => 5
+            ],
+            [
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
                 'stage' => 2,
-                'workspace_id' => 10,
+                'workspace_id' => 5
             ],
             [
-                'name' => 'Task #7',
-                'description' => 'Some test task made by Oleksandr',
-                'priority_level' => 1,
-                'stage' => 3,
-                'workspace_id' => 10,
-            ],
-            [
-                'name' => 'Task #8',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 3,
                 'stage' => 3,
-                'workspace_id' => 10,
+                'workspace_id' => 5
             ],
             [
-                'name' => 'Task #9',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 5
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 5
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 1,
+                'workspace_id' => 6
+            ],
+            [
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 2,
+                'workspace_id' => 6
+            ],
+            [
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 3,
                 'stage' => 3,
-                'workspace_id' => 10,
+                'workspace_id' => 6
             ],
             [
-                'name' => 'Task #10',
-                'description' => 'Some test task made by Oleksandr',
-                'priority_level' => 3,
-                'stage' => 4,
-                'workspace_id' => 10,
-            ],
-            [
-                'name' => 'Task #11',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 2,
                 'stage' => 4,
-                'workspace_id' => 10,
+                'workspace_id' => 6
             ],
             [
-                'name' => 'Task #12',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 1,
-                'stage' => 4,
-                'workspace_id' => 10,
+                'stage' => 5,
+                'workspace_id' => 6
             ],
             [
-                'name' => 'Task #13',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 1,
+                'workspace_id' => 7
+            ],
+            [
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 2,
-                'stage' => 5,
-                'workspace_id' => 10,
+                'stage' => 2,
+                'workspace_id' => 7
             ],
             [
-                'name' => 'Task #14',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 3,
-                'stage' => 5,
-                'workspace_id' => 10,
+                'stage' => 3,
+                'workspace_id' => 7
             ],
             [
-                'name' => 'Task #15',
-                'description' => 'Some test task made by Oleksandr',
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 7
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
                 'priority_level' => 1,
                 'stage' => 5,
-                'workspace_id' => 10,
-            ]
+                'workspace_id' => 7
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 1,
+                'workspace_id' => 8
+            ],
+            [
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 2,
+                'workspace_id' => 8
+            ],
+            [
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 3,
+                'stage' => 3,
+                'workspace_id' => 8
+            ],
+            [
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 8
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 8
+            ],
+            [
+                'name' => 'Welcome to the Task Management Tool',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 1,
+                'workspace_id' => 9
+            ],
+            [
+                'name' => 'Simply press + button and get started',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 2,
+                'workspace_id' => 9
+            ],
+            [
+                'name' => 'Move tasks between stages, view, or delete them',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 3,
+                'stage' => 3,
+                'workspace_id' => 9
+            ],
+            [
+                'name' => 'Organize and manage tasks easily. It is simple!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 2,
+                'stage' => 4,
+                'workspace_id' => 9
+            ],
+            [
+                'name' => 'Happy productive day. Enjoy!',
+                'description' => 'Tutorial task to guide new user',
+                'priority_level' => 1,
+                'stage' => 5,
+                'workspace_id' => 9
+            ],
         ]);
     }
 }

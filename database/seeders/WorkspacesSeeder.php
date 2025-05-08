@@ -62,12 +62,6 @@ class WorkspacesSeeder extends Seeder {
                 'description' => 'Manage the entire lifecycle of building a mobile app. Organize features, development tasks, bug tracking, and QA testing in one place.',
                 'last_used' => now(),
                 'user_id' => 3,
-            ],
-            [
-                'title' => 'My Project',
-                'description' => 'Laravel based web-application made to organize and manage tasks.',
-                'last_used' => now(),
-                'user_id' => 4,
             ]
         ]);
     }

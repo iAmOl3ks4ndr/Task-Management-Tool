@@ -20,6 +20,7 @@
     color: transparent;
     background: linear-gradient(45deg, #ff416c, #dcff41);
     background-clip: text;
+    text-shadow: none;
 }
 
 .signedupMessage {
